@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk ,messagebox
 import time, os
 
 #basic configuration
@@ -11,15 +11,21 @@ root.iconbitmap("K.ico")
 
 
 def submit():
-    print(f"Time Set To {time_entry.get()} and Reminder set as {msg_entry.get()}")
+    # print(f"Time Set To {time_entry.get()} and Reminder set as {msg_entry.get()}")
     alarm_time = time_entry.get()
+    a = msg_.get()
+    print(a)
     root.destroy()
     while True:
         current_time = time.strftime("%H:%M")
         if alarm_time == current_time:
             os.startfile('ringtone.mp3')
+            print("-"*60)
+            print("REMINDER")
+            print("OF")
+            print(f"{a}")
+            print("-"*60)
             break
-
 
 #text Boxes and Frames
 f = tk.Frame(root, bg="gray", height=20, width=20)     #a small box of gray color that separates the boxes
@@ -44,8 +50,8 @@ f2.pack(side=tk.TOP)
 message = tk.StringVar()           #user reminder message variable
 
 #same ttk.Entry Boxes
-msg_entry = ttk.Entry(f2, justify =tk.CENTER, textvariable =message, font=('Microsoft Yahei Light' , 40))
-msg_entry.pack()
+msg_ = ttk.Entry(f2, justify =tk.CENTER, textvariable =message, font=('Microsoft Yahei Light' , 40))
+msg_.pack()
 
 #frame to separate the boxes 
 f = tk.Frame(root, bg="gray", height=20, width=20)
