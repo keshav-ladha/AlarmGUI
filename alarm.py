@@ -9,22 +9,36 @@ root.geometry("480x240")
 root.config(background="grey")
 root.iconbitmap("K.ico")
 
+def remind(message):
+    window = tk.Tk() 
+  
+    # specify size of window. 
+    window.geometry("250x100") 
+
+    # Create text widget and specify size. 
+    T = tk.Text(window, height = 5, width = 52, font =("Microsoft Yahei Light", 24)) 
+    
+    # Create label 
+    l = tk.Label(window, text = "Reminder") 
+    l.config(font =("Courier", 14))
+    
+    l.pack() 
+    T.pack() 
+    
+    T.insert(tk.END, message) 
+    
+    tk.mainloop() 
 
 def submit():
     # print(f"Time Set To {time_entry.get()} and Reminder set as {msg_entry.get()}")
     alarm_time = time_entry.get()
     a = msg_.get()
-    print(a)
     root.destroy()
     while True:
         current_time = time.strftime("%H:%M")
         if alarm_time == current_time:
             os.startfile('ringtone.mp3')
-            print("-"*60)
-            print("REMINDER")
-            print("OF")
-            print(f"{a}")
-            print("-"*60)
+            remind(a)
             break
 
 #text Boxes and Frames
